@@ -16,15 +16,12 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('url');
-            $table->integer('brand_id')->unsigned()->nullable();
-            $table->foreign('brand_id')->references('id')->on('brands');
-            $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');            
-            $table->integer('product_id')->unsigned()->nullable();
-            $table->foreign('product_id')->references('id')->on('products');             
-            $table->integer('attribute_value_id')->unsigned()->nullable();
-            $table->foreign('attribute_value_id')->references('id')->on('attribute_values');            
+            $table->string('file_path');
+            $table->integer('imageable_id')->unsigned()->nullable();
+            $table->foreign('imageable_id')->references('id')->on('brands');
+            // $table->foreign('imageable_id')->references('id')->on('categories');
+            // $table->foreign('imageable_id')->references('id')->on('products');
+            // $table->foreign('imageable_id')->references('id')->on('attribute_values');
             $table->timestamps();
         });
     }

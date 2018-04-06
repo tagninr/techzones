@@ -20,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->boolean('sex');
             $table->string('phone');
-            $table->string('address');            
+            $table->string('address')->nullable();            
             $table->rememberToken();
             $table->timestamps();
         });
