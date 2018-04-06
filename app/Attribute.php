@@ -13,7 +13,7 @@ class Attribute extends Model
     }
 
     public function product(){
-    	return $this->belongsToMany('App\Product', 'product_id', 'id');
+    	return $this->belongsToMany('App\Product', 'attribute_values', 'attribute_id', 'product_id');
     }
 
     public function image(){

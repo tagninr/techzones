@@ -20,15 +20,19 @@ class Product extends Model
     	return $this->belongsTo('App\Employees', 'employees_id' 'id');
     }
 
-    public function billdetail(){
-        return $this->belongsToMany('App\BillDetail', 'bill_details', 'product_id', 'bill_id');
-    } 
+    // public function billdetail(){
+    //     return $this->belongsTo('App\BillDetail', 'bill_details', 'product_id', 'bill_id');
+    // }
 
+    public function bill(){
+        return $this->belongsToMany('App\Bill', 'bill_details', 'product_id', 'bill_id', );
+    }
+    
     public function image(){
-        return $this->belongsToMany('App\Image', 'images', 'product_id', 'attribute_id');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function attribute(){
-    	return $this->hasMany('App\Attribute');
+    	return $this->belongsToMany('App\Attribute', 'attribute_values', 'attribute_id', 'product_id');
     }
 }
