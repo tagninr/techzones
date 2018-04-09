@@ -16,9 +16,11 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('file_path');
+            $table->string('url');
             $table->integer('imageable_id')->unsigned()->nullable();
-            $table->foreign('imageable_id')->references('id')->on('brands');
+            $table->string('imageable_type');
+            // $table->morphs('imageable_id', 10);            
+            // $table->foreign('imageable_id')->references('id')->on('brands');
             // $table->foreign('imageable_id')->references('id')->on('categories');
             // $table->foreign('imageable_id')->references('id')->on('products');
             // $table->foreign('imageable_id')->references('id')->on('attribute_values');
